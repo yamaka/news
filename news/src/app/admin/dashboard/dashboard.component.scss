@@ -1,3 +1,4 @@
+$neutral-gray: #6c757d;
 .admin-container {
     height: 100vh;
   }
@@ -11,7 +12,7 @@
   .sidenav-header {
     padding: 16px;
     text-align: center;
-    background-color: #888f83; /* Updated color */
+    background-color: $neutral-gray; /* Updated color */
     color: white;
     
     h2 {
@@ -48,7 +49,7 @@
   
   .active-link {
     background-color: rgba(136, 143, 131, 0.1); /* Updated color with opacity */
-    border-left: 4px solid #888f83; /* Updated color */
+    border-left: 4px solid $neutral-gray; /* Updated color */
   }
   
   mat-nav-list {

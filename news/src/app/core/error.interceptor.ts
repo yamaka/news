@@ -5,7 +5,6 @@ import { AuthService } from '../core/services/auth.service';
 // import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
-  debugger;
   const authService = inject(AuthService);
 
   return next(req).pipe(

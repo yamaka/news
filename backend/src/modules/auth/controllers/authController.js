@@ -25,6 +25,8 @@ class AuthController {
         });
       }
 
+
+      await bcrypt.hash(password, 10);
       // Crear nuevo usuario
       const newUser = await User.create({
         username,
@@ -71,6 +73,7 @@ class AuthController {
       }
 
       // Verificar contraseña
+      
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
@@ -127,7 +130,9 @@ class AuthController {
       }
 
       // Verificar contraseña actual
+
       const isMatch = await bcrypt.compare(currentPassword, user.password);
+
 
       if (!isMatch) {
         return res.status(400).json({

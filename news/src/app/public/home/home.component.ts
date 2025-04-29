@@ -57,7 +57,9 @@ export class HomeComponent implements OnInit {
   loadPosts(): void {
     this.isLoading = true;
     this.newsService.getAllNews().subscribe(
-      (posts) => {
+      (response) => {
+        // Ensure the response is an array
+        const posts = Array.isArray(response) ? response : [];
         this.newsPosts = posts.sort((a, b) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();
         });

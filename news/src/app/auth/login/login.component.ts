@@ -72,7 +72,6 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.invalid) return;
     const { username, password } = this.loginForm.value;
-    debugger;
     this.authService.login(username, password).subscribe({
       next: (response) => {
         this.router.navigate(['/admin']);

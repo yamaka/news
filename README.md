@@ -132,7 +132,7 @@ The backend uses environment variables for configuration. These are defined in t
 DB_HOST=db
 DB_USER=usuario_db
 DB_PASS=contraseña_segura
-DB_NAME=inventory_sales_db
+DB_NAME=news_db
 DB_ROOT_PASSWORD=contraseña_root
 
 # Server Configuration

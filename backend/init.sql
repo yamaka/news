@@ -10,13 +10,13 @@ CREATE USER 'usuario_db'@'%' IDENTIFIED WITH mysql_native_password BY 'contrase√
 CREATE USER 'usuario_db'@'localhost' IDENTIFIED WITH mysql_native_password BY 'contrase√±a_segura';
 
 # Crear base de datos
-CREATE DATABASE IF NOT EXISTS inventory_sales_db 
+CREATE DATABASE IF NOT EXISTS news_db 
   CHARACTER SET utf8mb4 
   COLLATE utf8mb4_unicode_ci;
 
 # Otorgar todos los privilegios
-GRANT ALL PRIVILEGES ON inventory_sales_db.* TO 'usuario_db'@'%';
-GRANT ALL PRIVILEGES ON inventory_sales_db.* TO 'usuario_db'@'localhost';
+GRANT ALL PRIVILEGES ON news_db.* TO 'usuario_db'@'%';
+GRANT ALL PRIVILEGES ON news_db.* TO 'usuario_db'@'localhost';
 
 # Actualizar privilegios
 FLUSH PRIVILEGES;

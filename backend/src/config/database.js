@@ -9,7 +9,7 @@ const environments = {
   development: {
     username: process.env.DB_USER || 'usuario_db',
     password: process.env.DB_PASS || 'contraseña_segura',
-    database: process.env.DB_NAME || 'inventory_sales_db',
+    database: process.env.DB_NAME || 'news_db',
     host: process.env.DB_HOST || 'db',
     dialect: 'mysql',
     port: process.env.DB_PORT || 3306,

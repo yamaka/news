@@ -4,7 +4,6 @@ import { TokenStorageService } from '../core/services/token-storage.service';
 import { inject } from '@angular/core';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  debugger;
   const HOST = environment.apiUrl; // Base API URL from environment
   const tokenStorageService = inject(TokenStorageService); // Inject TokenStorageService
   const token = tokenStorageService.getToken(); // Retrieve token from storage
@@ -18,7 +17,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         }
       : {}, // No headers if token is null
   });
-  debugger;
   // Pass the modified request to the next handler
   return next(modifiedRequest);
 };

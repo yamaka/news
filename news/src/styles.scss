@@ -3,9 +3,12 @@
 /* Define custom colors */
 $primary-color: #007bff; // Blue
 $secondary-color: #87ceeb; // Sky Blue
-$background-color: #000000; // Black
+$background-color: #fff; // Black
 $title-color: #464242; // Title color
 $text-color: #727375; // Normal text color
+
+/* Updated color */
+$neutral-gray: #6c757d;
 
 /* Apply global styles */
 html, body {
@@ -88,23 +91,23 @@ mat-card-subtitle {
 
 /* Updated colors for form field labels */
 .mat-form-field-label {
-  color: #888f83 !important;
+  color: $neutral-gray !important;
 }
 
 .mat-form-field.mat-focused .mat-form-field-label {
-  color: #888f83 !important;
+  color: $neutral-gray !important;
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: #888f83 !important;
+  background-color: $neutral-gray !important;
 }
 
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
-  color: #888f83 !important;
+  color: $neutral-gray !important;
 }
 
 .mat-input-element {
-  caret-color: #888f83 !important;
+  caret-color: $neutral-gray !important;
 }
 
 /* Table styles */
@@ -123,63 +126,63 @@ mat-card-subtitle {
 
 /* Button styles - updated primary colors */
 .mat-flat-button.mat-primary, .mat-raised-button.mat-primary {
-  background-color: #888f83 !important;
+  background-color: $neutral-gray !important;
 }
 
 .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
-  color: #888f83 !important;
+  color: $neutral-gray !important;
 }
 
 .mat-flat-button.mat-accent, .mat-raised-button.mat-accent {
-  background-color: #888f83 !important;
+  background-color: $neutral-gray !important;
 }
 
 .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
-  color: #888f83 !important;
+  color: $neutral-gray !important;
 }
 
 /* Checkbox and radio button */
 .mat-checkbox-checked.mat-primary .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background,
 .mat-radio-button.mat-primary .mat-radio-inner-circle {
-  background-color: #888f83 !important;
+  background-color: $neutral-gray !important;
 }
 
 .mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {
-  border-color: #888f83 !important;
+  border-color: $neutral-gray !important;
 }
 
 /* Toolbar styles */
 .mat-toolbar.mat-primary {
-  background: #888f83 !important;
+  background: $neutral-gray !important;
   color: white;
 }
 
 /* Progress spinner */
 .mat-progress-spinner.mat-primary circle, .mat-spinner.mat-primary circle {
-  stroke: #888f83 !important;
+  stroke: $neutral-gray !important;
 }
 
 /* Paginator */
 .mat-paginator-page-size .mat-select-trigger {
-  color: #888f83 !important;
+  color: $neutral-gray !important;
 }
 
 /* Slider */
 .mat-slider-track-fill,
 .mat-slider-thumb,
 .mat-slider-thumb-label {
-  background-color: #888f83 !important;
+  background-color: $neutral-gray !important;
 }
 
 /* Selection list */
 .mat-selection-list .mat-list-option.mat-list-item-focus,
 .mat-selection-list .mat-list-option:hover {
-  background: rgba(136, 143, 131, 0.1) !important;
+  background: rgba(108, 117, 125, 0.1) !important;
 }
 
 .mat-list-option.mat-list-item-focus.mat-list-item-activated {
-  background: rgba(136, 143, 131, 0.2) !important;
+  background: rgba(108, 117, 125, 0.2) !important;
 }
 
 /* Material components overrides */

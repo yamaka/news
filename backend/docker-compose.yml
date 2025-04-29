@@ -6,7 +6,7 @@ services:
     container_name: news-db
     environment:
       MYSQL_ROOT_PASSWORD: contraseña_root
-      MYSQL_DATABASE: inventory_sales_db
+      MYSQL_DATABASE: news_db
       MYSQL_USER: usuario_db
       MYSQL_PASSWORD: contraseña_segura
     ports:
@@ -34,7 +34,7 @@ services:
       - DB_HOST=db
       - DB_USER=usuario_db
       - DB_PASS=contraseña_segura
-      - DB_NAME=inventory_sales_db
+      - DB_NAME=news_db
       - DB_ROOT_PASSWORD=contraseña_root
       - JWT_SECRET=izi_ventas_secret
       - PORT=8082

@@ -5,6 +5,10 @@ import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 
 import { connectDatabase } from "./config/database.js";
+//seeders
+import seedAdminUser from './seeders/userSeeder.js';
+import  seedCategories  from "./seeders/categorySeeder.js";
+import  seedNews  from "./seeders/newsSeeder.js";
 
 import authRoutes from "./modules/auth/routes/authRoutes.js";
 
@@ -72,6 +76,11 @@ class App {
 
     try {
       await connectDatabase();
+
+      await seedAdminUser();
+      // Run the category seeder
+    await seedCategories();
+    await seedNews();
 
       this.app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);

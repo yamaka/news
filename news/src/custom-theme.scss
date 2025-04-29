@@ -1,18 +1,108 @@
-
+@use 'SASS:map';
 @use '@angular/material' as mat;
 
-/* Define custom Material theme colors */
-$primary: mat.define-palette(mat.$blue-palette, 500, 300, 700);
-$accent: mat.define-palette(mat.$light-blue-palette, 500, 300, 700);
-$warn: mat.define-palette(mat.$red-palette);
 
-$theme: mat.define-light-theme((
-  color: (
-    primary: $primary,
-    accent: $accent,
-    warn: $warn,
-  ),
-  typography: mat.define-typography-config(),
+$md-primary: (
+    50 : #fee6fe,
+    100 : #fcbffd,
+    200 : #fa95fb,
+    300 : #f76bf9,
+    400 : #f64bf8,
+    500 : #f42bf7,
+    600 : #f326f6,
+    700 : #f120f5,
+    800 : #ef1af3,
+    900 : #ec10f1,
+    A100 : #ffffff,
+    A200 : #feebff,
+    A400 : #fdb8ff,
+    A700 : #fc9eff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$md-secondary: (
+    50 : #f6e1ff,
+    100 : #eab3ff,
+    200 : #dc80ff,
+    300 : #cd4dff,
+    400 : #c327ff,
+    500 : #b801ff,
+    600 : #b101ff,
+    700 : #a801ff,
+    800 : #a001ff,
+    900 : #9100ff,
+    A100 : #ffffff,
+    A200 : #f9f2ff,
+    A400 : #e0bfff,
+    A700 : #d4a6ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+//GLOBAL
+
+$my-primary: mat.m2-define-palette($md-primary, 500);
+$my-secondary: mat.m2-define-palette($md-secondary, 500);
+$my-theme: mat.m2-define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-secondary,
+ )
 ));
+@include mat.all-component-themes($my-theme);
 
-@include mat.all-component-themes($theme);
+$color-config: mat.m2-get-color-config($my-theme);
+$primary-palette: map.get($color-config, 'primary');
+$accent-palette: map.get($color-config, 'accent');
+$primary: mat.get-theme-color($my-theme, 'primary', 500);
+$secondary: mat.get-theme-color($my-theme, 'accent', 500);
+$light-secondary: mat.get-theme-color($my-theme, 'accent', 300);
+$light-primary: mat.get-theme-color($my-theme, 'primary', 300);
+
+//PALETTE BASICS
+$light-grey: rgb(228, 228, 228);
+$grey: #252525;
+$secondary-text: #525252;
+$black: rgb(20, 20, 20);
+
+
+:root {
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --light-secondary: #{$light-secondary};
+    --light-primary: #{$light-primary};
+    --light-grey: #{$light-grey};
+    --grey: #{$grey};
+    --secondary-text: #{$secondary-text};
+    --black: #{$black};
+}
