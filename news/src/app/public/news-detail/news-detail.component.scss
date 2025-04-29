@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    background-color: #888f83; /* Updated color */
   }
   
   .site-title {
@@ -44,10 +45,13 @@
   
   .post-card {
     width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     
     .post-title {
       font-size: 2rem;
       margin-bottom: 10px;
+      color: #333;
     }
   }
   
@@ -62,6 +66,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     white-space: pre-line;
+    color: #333;
   }
   
   .post-meta {
@@ -74,8 +79,8 @@
   }
   
   .category-chip {
-    background-color: #3f51b5;
-    color: white;
+    background-color: rgba(136, 143, 131, 0.15); /* Updated color with opacity */
+    color: #888f83; /* Updated color */
     padding: 4px 8px;
     border-radius: 16px;
     font-size: 0.8rem;
@@ -84,9 +89,10 @@
   .section-title {
     font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: A20px;
+    margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #3f51b5;
+    border-bottom: 1px solid #e0e0e0;
+    color: #333;
   }
   
   .related-grid {
@@ -99,13 +105,17 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     
     .related-title {
       font-size: 1.2rem;
+      color: #333;
     }
     
     mat-card-content {
       flex: 1;
+      color: #333;
     }
   }
   
@@ -115,7 +125,7 @@
   }
   
   .main-footer {
-    background-color: #3f51b5;
+    background-color: #888f83; /* Updated color */
     color: white;
     padding: 20px;
     text-align: center;

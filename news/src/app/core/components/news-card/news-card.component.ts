@@ -1,10 +1,19 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NewsPost } from '../../models/news-post';
+import { CommonModule } from '@angular/common';
+
+// Material imports
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+
+import { NewsPost } from '../../../shared/models/news-post';
 
 @Component({
   selector: 'app-news-card',
   templateUrl: './news-card.component.html',
   styleUrls: ['./news-card.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatChipsModule],
 })
 export class NewsCardComponent {
   @Input() newsPost!: NewsPost;

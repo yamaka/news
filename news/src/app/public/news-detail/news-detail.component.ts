@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
+
+// Material imports
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NewsService } from '../../core/services/news.service';
 import { CategoryService } from '../../core/services/category.service';
@@ -8,9 +17,19 @@ import { NewsPost } from '../../shared/models/news-post';
 import { Category } from '../../shared/models/category';
 
 @Component({
-  selector: 'app-public-news-detail',
+  selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
   styleUrls: ['./news-detail.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+  ],
 })
 export class NewsDetailComponent implements OnInit {
   newsPost: NewsPost | null = null;
@@ -66,7 +85,7 @@ export class NewsDetailComponent implements OnInit {
   }
 
   loadRelatedPosts(categoryId: string, currentPostId: string): void {
-    this.newsService.getPosts().subscribe(
+    this.newsService.getAllNews().subscribe(
       (posts) => {
         // Get posts from the same category, excluding the current post
         this.relatedPosts = posts

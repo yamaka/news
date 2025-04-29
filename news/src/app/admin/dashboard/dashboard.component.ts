@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule, RouterOutlet } from '@angular/router';
+
+// Material imports - IMPORTANT: include all Material modules used in the template
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+
 import { AuthService } from '../../core/services/auth.service';
 import { User } from '../../shared/models/user';
 
@@ -7,6 +18,18 @@ import { User } from '../../shared/models/user';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    RouterOutlet, // Add this specifically for router-outlet
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatMenuModule,
+  ],
 })
 export class DashboardComponent implements OnInit {
   currentUser: User | null = null;

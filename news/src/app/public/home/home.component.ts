@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+
+// Material imports
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NewsService } from '../../core/services/news.service';
 import { CategoryService } from '../../core/services/category.service';
@@ -7,10 +16,23 @@ import { AuthService } from '../../core/services/auth.service';
 import { NewsPost } from '../../shared/models/news-post';
 import { Category } from '../../shared/models/category';
 
+// Import shared components
+import { NewsCardComponent } from '../../core/components/news-card/news-card.component';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+  ],
 })
 export class HomeComponent implements OnInit {
   newsPosts: NewsPost[] = [];
@@ -34,7 +56,7 @@ export class HomeComponent implements OnInit {
 
   loadPosts(): void {
     this.isLoading = true;
-    this.newsService.getPosts().subscribe(
+    this.newsService.getAllNews().subscribe(
       (posts) => {
         this.newsPosts = posts.sort((a, b) => {
           return new Date(b.date).getTime() - new Date(a.date).getTime();

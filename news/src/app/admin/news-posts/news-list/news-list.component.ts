@@ -1,9 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+// Material imports
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NewsService } from '../../../core/services/news.service';
 import { CategoryService } from '../../../core/services/category.service';
@@ -14,6 +24,21 @@ import { Category } from '../../../shared/models/category';
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
   styleUrls: ['./news-list.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+  ],
 })
 export class NewsListComponent implements OnInit {
   dataSource = new MatTableDataSource<NewsPost>([]);
@@ -49,15 +74,16 @@ export class NewsListComponent implements OnInit {
 
   loadNewsData(): void {
     this.isLoading = true;
-    this.newsService.getPosts().subscribe(
+    this.newsService.getAllNews().subscribe(
       (posts) => {
         this.dataSource.data = posts;
         this.isLoading = false;
       },
       (error) => {
-        console.error('Error loading news posts:', error);
+        this.snackBar.open('Failed to load news posts', 'Close', {
+          duration: 3000,
+        });
         this.isLoading = false;
-        this.showError('Failed to load news posts');
       }
     );
   }

@@ -47,7 +47,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [NewsListComponent, NewsFormComponent, NewsDetailComponent],
+  declarations: [
+    DashboardComponent,
+    NewsListComponent,
+    NewsFormComponent,
+    NewsDetailComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

@@ -3,14 +3,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: #f9f9f9;
   }
   
   .login-card {
     width: 100%;
     max-width: 400px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
   }
   
   .full-width {
@@ -26,6 +27,7 @@
     button {
       width: 100%;
       padding: 10px;
+      background-color: #888f83; /* Updated color */
     }
   }
   
@@ -38,5 +40,28 @@
     p {
       color: #666;
       font-size: 0.9rem;
+    }
+  }
+  
+  /* Specific styling for form fields */
+  :host ::ng-deep {
+    .mat-form-field-label {
+      color: #888f83 !important; /* Updated color */
+    }
+    
+    .mat-form-field.mat-focused .mat-form-field-label {
+      color: #888f83 !important; /* Updated color */
+    }
+    
+    .mat-form-field-underline, .mat-form-field-ripple {
+      background-color: #888f83 !important; /* Updated color */
+    }
+    
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: rgba(136, 143, 131, 0.3) !important; /* Updated color with opacity */
+    }
+    
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+      color: #888f83 !important; /* Updated color */
     }
   }

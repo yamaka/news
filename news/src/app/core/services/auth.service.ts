@@ -1,34 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { User } from '../../shared/models/user';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { environment } from '../../environment';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  private currentUserSubject = new BehaviorSubject<any>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
-  // Mock users for demonstration
-  private users: User[] = [
-    {
-      id: '1',
-      name: 'Admin User',
-      email: 'admin@example.com',
-      password: 'admin123',
-      role: 'admin',
-    },
-    {
-      id: '2',
-      name: 'Editor User',
-      email: 'editor@example.com',
-      password: 'editor123',
-      role: 'editor',
-    },
-  ];
-
-  constructor(private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
     // Check if user is stored in localStorage
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
@@ -36,34 +20,35 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string): Observable<boolean> {
-    // Find user
-    const user = this.users.find(
-      (u) => u.email === email && u.password === password
+  login(username: string, password: string): Observable<any> {
+    debugger;
+    return this.http.post(`/auth/login`, { username, password }).pipe(
+      tap((response: any) => {
+        localStorage.setItem('token', response.token);
+        this.currentUserSubject.next(response.user);
+      })
     );
+  }
 
-    if (user) {
-      // Remove password before storing
-      const { password, ...secureUser } = user;
-      this.currentUserSubject.next(secureUser as User);
-      localStorage.setItem('currentUser', JSON.stringify(secureUser));
-      return of(true);
-    }
-
-    return of(false);
+  register(name: string, email: string, password: string): Observable<any> {
+    return this.http.post(`/auth/register`, {
+      name,
+      email,
+      password,
+    });
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     this.currentUserSubject.next(null);
     this.router.navigate(['/auth/login']);
   }
 
   isLoggedIn(): boolean {
-    return !!this.currentUserSubject.value;
+    return !!localStorage.getItem('token');
   }
 
-  get currentUser(): User | null {
+  get currentUser(): any {
     return this.currentUserSubject.value;
   }
 }

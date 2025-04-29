@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 
 // Components
-import { NewsCardComponent } from './components/news-card/news-card.component';
+import { NewsCardComponent } from '../core/components/news-card/news-card.component';
 
 @NgModule({
   declarations: [NewsCardComponent],

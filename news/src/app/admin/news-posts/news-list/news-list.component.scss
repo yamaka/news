@@ -12,6 +12,7 @@
       margin: 0;
       font-size: 1.8rem;
       font-weight: 500;
+      color: #333;
     }
   }
   
@@ -22,6 +23,9 @@
   
   .table-container {
     overflow-x: auto;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
   table {
@@ -46,5 +50,18 @@
   }
   
   tr.mat-row:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(136, 143, 131, 0.05); /* Updated color with opacity */
+  }
+  
+  mat-card {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-chip {
+    background-color: rgba(136, 143, 131, 0.15); /* Updated color with opacity */
+    color: #888f83; /* Updated color */
+    padding: 3px 8px;
+    border-radius: 16px;
+    font-size: 0.8rem;
   }

@@ -1,7 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
+// Material imports
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { NewsService } from '../../../core/services/news.service';
 import { CategoryService } from '../../../core/services/category.service';
@@ -13,6 +28,19 @@ import { Category } from '../../../shared/models/category';
   selector: 'app-news-form',
   templateUrl: './news-form.component.html',
   styleUrls: ['./news-form.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+  ],
 })
 export class NewsFormComponent implements OnInit {
   newsForm!: FormGroup;
@@ -41,7 +69,7 @@ export class NewsFormComponent implements OnInit {
       if (params['id']) {
         this.postId = params['id'];
         this.isEditMode = true;
-        this.loadPostData(this.postId);
+        this.loadPostData(this.postId || '');
       }
     });
   }
@@ -112,7 +140,7 @@ export class NewsFormComponent implements OnInit {
     if (this.isEditMode && this.postId) {
       // Update existing post
       newsPost.id = this.postId;
-      this.newsService.updatePost(newsPost).subscribe(
+      this.newsService.updatePost(this.postId, newsPost).subscribe(
         (updatedPost) => {
           this.showSuccess('Post updated successfully');
           this.router.navigate(['/admin/news']);
@@ -126,7 +154,7 @@ export class NewsFormComponent implements OnInit {
       );
     } else {
       // Create new post
-      this.newsService.addPost(newsPost).subscribe(
+      this.newsService.createNews(newsPost).subscribe(
         (newPost) => {
           this.showSuccess('Post created successfully');
           this.router.navigate(['/admin/news']);
